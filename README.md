@@ -25,7 +25,7 @@ For the purpose of this pipeline, the pre-trained ResNet50 model is used as a **
 
 Most of the pretrained models are readily available in deep learning frameworks such as TensorFlow/Keras or PyTorch. For the purposes of this pipeline, we have selected the ResNet50 model, which has been pre-trained on a source task (i.e., the ImageNet database) using Keras, as depicted in Figure 4.
 
-![image](https://github.com/Vedaprakash88/ResNet50_Demo/assets/103208134/3d6636fe-d1e1-49ad-9220-bd7887e44523)
+![image](https://github.com/Vedaprakash88/transfer_learning_with_ResNet50/assets/103208134/3d6636fe-d1e1-49ad-9220-bd7887e44523)
 
 *Figure 4: Pre-Selection of ResNet50 model*
 
@@ -35,7 +35,7 @@ Most of the pretrained models are readily available in deep learning frameworks 
 * The ResNet50 model from Keras's applications module is added as the base.
 * The top layer (fully connected/dense layers) is excluded using `include_top=False`. This is because the pre-trained model is intended to be used as a "Feature Extractor", and therefore, a bespoke classifier needs to be added on top of it.
 
-![image](https://github.com/Vedaprakash88/ResNet50_Demo/assets/103208134/d603ce26-adb9-4ccc-8a04-255f1404358d)
+![image](https://github.com/Vedaprakash88/transfer_learning_with_ResNet50/assets/103208134/d603ce26-adb9-4ccc-8a04-255f1404358d)
 
 *Figure 5: 'include_top = False' depiction*
 
@@ -47,7 +47,7 @@ Most of the pretrained models are readily available in deep learning frameworks 
 * The model is compiled using the `Adam` optimizer (learning rate `0.0001`) and `SparseCategoricalCrossentropy()` loss function.
 * Finally, a summary of the model, which provides information about the layers, output shapes, and the total number of parameters in the model is printed, as shown in Figure 6.
 
-![image](https://github.com/Vedaprakash88/ResNet50_Demo/assets/103208134/f0a61f34-0b68-44c8-912e-2086768a742f)
+![image](https://github.com/Vedaprakash88/transfer_learning_with_ResNet50/assets/103208134/f0a61f34-0b68-44c8-912e-2086768a742f)
 
 *Figure 6: 'my_model' Summary*
 
@@ -57,7 +57,7 @@ Most of the pretrained models are readily available in deep learning frameworks 
 
 This pipeline is designed and tested using the **Brain Tumor MRI Classification** dataset, which can be downloaded from [Kaggle](https://www.kaggle.com/datasets/masoudmzb/brain-tumor-mri-dataset). The dataset contains a total of 7,023 images, with a training split of 5,712 and a testing split of 1,311 images across 4 tumor classes: `glioma`, `meningioma`, `notumor`, and `pituitary`.
 
-![image](https://github.com/Vedaprakash88/ResNet50_Demo/assets/103208134/1d3f4fea-ff8b-477f-a0e7-8463a090ce16)
+![image](https://github.com/Vedaprakash88/transfer_learning_with_ResNet50/assets/103208134/1d3f4fea-ff8b-477f-a0e7-8463a090ce16)
 
 *Figure 7: Input Data from Kaggle*
 
@@ -70,13 +70,13 @@ As the ResNet50 model expects the input data to be pre-processed using the model
 * The `color_mode` parameter is set to `'rgb'`, which means that the input images are expected to have 3 color channels. Even though the input images are greyscale images, they are passed as RGB because ResNet50 expects 3-channel input arrays.
 * The `class_indices` mapping is checked to ensure labels are aligned correctly.
 
-![image](https://github.com/Vedaprakash88/ResNet50_Demo/assets/103208134/c37d5283-326d-4aaf-bf0f-b4d9f058d052)
+![image](https://github.com/Vedaprakash88/transfer_learning_with_ResNet50/assets/103208134/c37d5283-326d-4aaf-bf0f-b4d9f058d052)
 
 *Figure 8: Image preprocessing and pipeline building*
 
 The processed and batched inputs are visualized as shown in Figure 9.
 
-![image](https://github.com/Vedaprakash88/ResNet50_Demo/assets/103208134/269d84a3-6dc1-4713-ab1d-f30a39855376)
+![image](https://github.com/Vedaprakash88/transfer_learning_with_ResNet50/assets/103208134/269d84a3-6dc1-4713-ab1d-f30a39855376)
 
 *Figure 9: Visualization of Inputs*
 
@@ -89,13 +89,13 @@ The training code triggers the Keras `fit()` method using the generators:
 * The `steps_per_epoch` is configured based on batch sizes.
 * Training executes with `TensorBoard`, `EarlyStopping`, and `ModelCheckpoint` callbacks.
 
-![image](https://github.com/Vedaprakash88/ResNet50_Demo/assets/103208134/91603afc-85fd-4c45-90e5-5de51ef5dca9)
+![image](https://github.com/Vedaprakash88/transfer_learning_with_ResNet50/assets/103208134/91603afc-85fd-4c45-90e5-5de51ef5dca9)
 
 *Figure 10: Train, Validate and Save Model*
 
 The history object stores information about the training metrics, such as the loss and accuracy at each epoch, as shown in Figure 11.
 
-![image](https://github.com/Vedaprakash88/ResNet50_Demo/assets/103208134/3410b328-c60c-4e96-a473-aa1d73ad2fdb)
+![image](https://github.com/Vedaprakash88/transfer_learning_with_ResNet50/assets/103208134/3410b328-c60c-4e96-a473-aa1d73ad2fdb)
 
 *Figure 11: Model undergoing training*
 
@@ -103,13 +103,13 @@ The history object stores information about the training metrics, such as the lo
 
 The model achieves ~97% validation accuracy during a full training cycle:
 
-![image](https://github.com/Vedaprakash88/ResNet50_Demo/assets/103208134/1d97ebc1-d041-401d-bd4d-64e3f813ab5c)
+![image](https://github.com/Vedaprakash88/transfer_learning_with_ResNet50/assets/103208134/1d97ebc1-d041-401d-bd4d-64e3f813ab5c)
 
 *Figure 12: Validation Accuracy*
 
 The corresponding reduction in validation loss over training epochs is depicted below:
 
-![image](https://github.com/Vedaprakash88/ResNet50_Demo/assets/103208134/cefc7a08-e39d-4f54-a311-0067c9798821)
+![image](https://github.com/Vedaprakash88/transfer_learning_with_ResNet50/assets/103208134/cefc7a08-e39d-4f54-a311-0067c9798821)
 
 *Figure 13: Validation Loss*
 
