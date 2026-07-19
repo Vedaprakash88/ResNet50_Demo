@@ -1,0 +1,21 @@
+# Python cache
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Distribution / packaging
+build/
+dist/
+*.egg-info/
+
+# Environments
+venv/
+ENV/
+env/
+
+# Local configuration overrides
+config.local.ini
+
+# IDEs
+.idea/
+.vscode/

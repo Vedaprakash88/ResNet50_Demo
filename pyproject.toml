@@ -1,0 +1,26 @@
+[build-system]
+requires = ["setuptools>=61.0.0"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "resnet_classifier"
+version = "0.1.0"
+description = "A modular Object-Oriented pipeline for ResNet50 transfer learning image classification"
+readme = "README.md"
+requires-python = ">=3.10"
+classifiers = [
+    "Programming Language :: Python :: 3",
+    "Operating System :: OS Independent",
+]
+dependencies = [
+    "easygui",
+    "numpy==1.23.5",
+    "matplotlib",
+    "opencv-python",
+    "tensorflow>=2.10.0",
+    "tqdm"
+]
+
+[tool.setuptools.packages.find]
+where = ["."]
+include = ["resnet_classifier*"]
